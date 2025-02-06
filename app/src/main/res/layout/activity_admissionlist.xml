@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".Admissionlist">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List Of Students"
+        android:layout_marginStart="16sp"
+        android:textStyle="bold"
+        android:textSize="26dp"
+        android:textColor="@color/blue"
+        android:layout_marginTop="50dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvlistofstudent"
+        android:layout_marginTop="20sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="No Student"
+        android:textSize="30dp"
+        android:visibility="gone"
+        android:id="@+id/tvnostudent"
+        android:gravity="center"
+        />
+
+</LinearLayout>
