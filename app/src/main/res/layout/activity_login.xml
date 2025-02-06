@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/blue"
+    tools:context=".LoginActivity">
+    <ImageView
+        android:layout_width="180sp"
+        android:layout_height="160sp"
+        android:src="@drawable/applogo"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
+        />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="6dp"
+        >
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           >
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginTop="16dp"
+               android:fontFamily="@font/audiowide"
+               android:text="LOG IN"
+               android:textColor="@color/blue"
+               android:textSize="31dp"
+               android:layout_marginBottom="16sp"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Username"
+               android:textSize="16sp"
+               android:textColor="@color/gray"
+               android:layout_marginStart="16sp"
+               />
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginEnd="16sp"
+               android:layout_marginStart="16sp"
+               android:background="@drawable/edittextback"
+               android:layout_marginTop="8dp"
+               android:padding="10sp"
+               android:id="@+id/etusername"
+               android:inputType="text"
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Password"
+               android:textSize="16sp"
+               android:textColor="@color/gray"
+               android:layout_marginStart="16sp"
+               android:layout_marginTop="16dp"
+               />
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginEnd="16sp"
+               android:layout_marginStart="16sp"
+               android:background="@drawable/edittextback"
+               android:layout_marginTop="8dp"
+               android:padding="10sp"
+               android:id="@+id/etpassword"
+               android:inputType="textPassword"
+               />
+           <CheckBox
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="show password"
+               android:layout_marginTop="14dp"
+               android:layout_marginStart="16sp"
+               android:id="@+id/cbShowPassword"
+               />
+           <androidx.appcompat.widget.AppCompatButton
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Log In"
+               android:layout_marginStart="16sp"
+               android:layout_marginTop="14dp"
+               android:layout_marginEnd="16sp"
+               android:background="@color/blue"
+               android:textColor="@color/white"
+               android:id="@+id/btnLogin"
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="New Admission? | Click Here"
+               android:layout_gravity="center"
+               android:layout_marginTop="12dp"
+               android:id="@+id/tvnewadmission"
+               android:textSize="16sp"
+               android:textColor="#2196F3"
+               android:layout_marginStart="16sp"
+               />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="By Log in you agree to our private policy"
+               android:textColor="#767373"
+               android:layout_gravity="center"
+               android:layout_marginTop="8dp"
+               android:layout_marginStart="16sp"
+               android:textSize="12dp"
+               />
+
+
+
+
+
+       </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</LinearLayout>

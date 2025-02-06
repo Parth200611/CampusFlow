@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".Doc">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADMISSION DOCUMENT"
+            android:textColor="@color/blue"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="36dp"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:fontFamily="sans-serif-medium"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passport Photo"
+            android:textColor="#565656"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="14sp"
+            android:textSize="14dp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:id="@+id/ivprofilimage"
+            android:layout_margin="16sp"
+            android:src="@drawable/baseline_camera_alt_24"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnaddprofilimage"
+            android:text="Add Image"
+            android:backgroundTint="@color/blue"
+            android:layout_marginStart="16sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adhar Card Photo"
+            android:textColor="#565656"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="14sp"
+            android:textSize="14dp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:id="@+id/ivadhrimage"
+            android:layout_margin="16sp"
+            android:src="@drawable/baseline_camera_alt_24"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnaddadhrcardimage"
+            android:text="Add Image"
+            android:backgroundTint="@color/blue"
+            android:layout_marginStart="16sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ARC Receipt Photo"
+            android:textColor="#565656"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="14sp"
+            android:textSize="14dp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:id="@+id/ivarcrecipt"
+            android:layout_margin="16sp"
+            android:src="@drawable/baseline_camera_alt_24"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnaddarcrecipt"
+            android:text="Add Image"
+            android:backgroundTint="@color/blue"
+            android:layout_marginStart="16sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marks sheet Photo"
+            android:textColor="#565656"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="14sp"
+            android:textSize="14dp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:id="@+id/ivmarksheet"
+            android:layout_margin="16sp"
+            android:src="@drawable/baseline_camera_alt_24"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnmarksheet"
+            android:text="Add Image"
+            android:backgroundTint="@color/blue"
+            android:layout_marginStart="16sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cast Certificate Photo"
+            android:textColor="#565656"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="14sp"
+            android:textSize="14dp"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:id="@+id/ivcastcertificate"
+            android:layout_margin="16sp"
+            android:src="@drawable/baseline_camera_alt_24"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btncastcertificate"
+            android:text="Add Image"
+            android:backgroundTint="@color/blue"
+            android:layout_marginStart="16sp"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16sp"
+            android:layout_marginEnd="16sp"
+            android:layout_marginTop="21sp"
+            android:id="@+id/btnsubmitform"
+            android:background="@color/blue"
+            android:text="Submit"
+            android:textColor="@color/white"
+            android:layout_marginBottom="100dp"
+            />
+
+
+    </LinearLayout>
+
+</ScrollView>
