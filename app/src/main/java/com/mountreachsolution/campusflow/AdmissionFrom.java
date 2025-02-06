@@ -46,12 +46,12 @@ import cz.msebera.android.httpclient.Header;
 
 public class AdmissionFrom extends AppCompatActivity {
 
-    EditText etname,etblood,etnumber,etaddress,etadhrno,etdateofbirth,etnationality,etpercentage,etfathername,etfathercontactnumber,etfatheroccuption,etaddressfather;
+    EditText etname,etblood,etnumber,etaddress,etadhrno,etdateofbirth,etnationality,etpercentage,etEmail,etfathername,etfathercontactnumber,etfatheroccuption,etaddressfather;
     Spinner cast,branch,admissionyear,lastexam;
 
 
 
-    String Formnumber,strcast,strbarnch,stradissionmyer,strlstexm;
+    String Formnumber,strcast,strbarnch,stradissionmyer,strlstexm,Email;
     AppCompatButton btnSubmit;
     private  int pick_image_request=789;
     Bitmap bitmap,bitmapp,bitmappp,bitmapppp,bitmappppp,bitmapppppp;
@@ -77,6 +77,7 @@ public class AdmissionFrom extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         etname=findViewById(R.id.rtregistername);
+        etEmail=findViewById(R.id.etEmail);
         etblood=findViewById(R.id.etbloodgroup);
         etnumber=findViewById(R.id.etNumber);
         etaddress=findViewById(R.id.etregisteraddress);
@@ -174,6 +175,7 @@ public class AdmissionFrom extends AppCompatActivity {
                  fathercontact = etfathercontactnumber.getText().toString().trim();
                  addressfather = etaddressfather.getText().toString().trim();
                  percentage=etpercentage.getText().toString().trim();
+                 Email=etEmail.getText().toString().trim();
 
                 if (name.isEmpty()) {
                     etname.setError("Name is required");
@@ -220,6 +222,9 @@ public class AdmissionFrom extends AppCompatActivity {
                 } else if (strlstexm.isEmpty()) {
 
                     Toast.makeText(getApplicationContext(), "Please fill all fields properly", Toast.LENGTH_SHORT).show();
+                } else if (Email.isEmpty()) {
+                    etEmail.setError("Enter Email");
+
                 } else {
                     // If all fields are valid, proceed with further action
                     // You can now process the data, for example:
@@ -259,6 +264,7 @@ public class AdmissionFrom extends AppCompatActivity {
         params.put("parentcontactno", fathercontact);
         params.put("addressparent", addressfather);
         params.put("bloodgroup", blood);
+        params.put("email",Email);
 
         client.post(urls.admission,params,new JsonHttpResponseHandler(){
             @Override
