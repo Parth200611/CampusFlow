@@ -136,4 +136,12 @@ public class Admissionlist extends AppCompatActivity {
 
         requestQueue.add(stringRequest);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        pojoAdmissioncasts.clear(); // Clear previous data to avoid duplication
+        getData(cast); // Fetch data again when coming back
+    }
+
 }

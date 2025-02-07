@@ -11,4 +11,7 @@ public class urls {
     public static String addmarksheet=address+"addmark.php";
     public static String admission=address+"admissioninsertdata.php";
     public static String admissionlistcast=address+"listaccordingtocast.php";
+    public static String getdatabyid=address+"getfulldetails.php";
+    public static String removeuser=address+"removeUser.php";
+    public static String admissionconfirm=address+"confirmadmission.php";
 }
