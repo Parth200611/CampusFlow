@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency Help"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="60dp"
+            android:paddingBottom="10dp"/>
+
+        <!-- Description -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Click the buttons below to call emergency services when needed."
+            android:textSize="16sp"
+            android:paddingBottom="20dp"
+            android:gravity="center"/>
+
+        <!-- Call Buttons -->
+        <Button
+            android:id="@+id/btnCallPolice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Call Police"
+            android:backgroundTint="@color/blue"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnCallAmbulance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Call Ambulance"
+            android:backgroundTint="@color/blue"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnCallDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Call Doctor"
+            android:backgroundTint="@color/blue"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnCallFireBrigade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Call Fire Brigade"
+            android:backgroundTint="@color/blue"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+</ScrollView>
