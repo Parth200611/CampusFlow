@@ -29,24 +29,23 @@ public class profilfragmeent extends Fragment {
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logout();
+                logoutUser();
             }
         });
         
         return view;
     }
 
-    public void logout() {
-        SharedPreferences  sharedPreferences = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear(); // Clear all saved login data
+    private void logoutUser() {
+        SharedPreferences.Editor editor = getActivity().getSharedPreferences(LoginActivity.PREFS_NAME, Context.MODE_PRIVATE).edit();
+        editor.clear(); // Clear login data
         editor.apply();
 
-        // Redirect to Login Page
+        // Redirect to LoginActivity
         Intent intent = new Intent(getActivity(), LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear activity stack
         startActivity(intent);
-       // Close current activity
+        getActivity().finish();
     }
 
 }

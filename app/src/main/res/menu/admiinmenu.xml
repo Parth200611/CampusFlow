@@ -10,6 +10,10 @@
         android:title="View Workers"
         />
     <item
+        android:id="@+id/adminAddworker"
+        android:title="Add Workers"
+        />
+    <item
     android:id="@+id/adminHelp"
     android:title="Help"
     />

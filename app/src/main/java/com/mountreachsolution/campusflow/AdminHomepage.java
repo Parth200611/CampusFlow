@@ -75,6 +75,10 @@ public class AdminHomepage extends AppCompatActivity implements BottomNavigation
             Intent i = new Intent(AdminHomepage.this,ViewLeaveRequest.class);
             startActivity(i);
 
+        } else if (item.getItemId() == R.id.adminAddworker) {
+            Intent i = new Intent(AdminHomepage.this,AddWorker.class);
+            startActivity(i);
+
         }
 
         return true;
