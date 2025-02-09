@@ -18,4 +18,6 @@ public class urls {
     public static String addnoticeimg=address+"addnoticeimg.php";
     public static String studentlogin=address+"login.php";
     public static String addworker=address+"addworker.php";
+    public static String getworker=address+"getworker.php";
+    public static String removeworker=address+"removeworker.php";
 }

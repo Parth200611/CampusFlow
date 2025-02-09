@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -39,6 +40,8 @@ public class AddWorker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_add_worker);
+        getWindow().setStatusBarColor(ContextCompat.getColor(AddWorker.this,R.color.blue));
+        getWindow().setNavigationBarColor(ContextCompat.getColor(AddWorker.this,R.color.white));
 
         etFullname = findViewById(R.id.etFullname);
         etAdhrno = findViewById(R.id.etAdhrno);
