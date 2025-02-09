@@ -16,7 +16,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Calendar;
+
+import cz.msebera.android.httpclient.Header;
 
 public class AddWorker extends AppCompatActivity {
      EditText etFullname, etAdhrno, etMobile, etAddress, etNoticeDate, etJoiningDate, etQualification;
@@ -84,19 +93,32 @@ public class AddWorker extends AppCompatActivity {
     }
 
     private void setupDatePickers() {
-        etNoticeDate.setOnClickListener(v -> showDatePickerDialog(etNoticeDate));
-        etJoiningDate.setOnClickListener(v -> showDatePickerDialog(etJoiningDate));
+        etNoticeDate.setOnClickListener(v -> showNoticeDatePickerDialog());
+        etJoiningDate.setOnClickListener(v -> showJoiningDatePickerDialog());
     }
 
-    private void showDatePickerDialog(EditText editText) {
+    private void showNoticeDatePickerDialog() {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, selectedYear, selectedMonth, selectedDay) -> {
-            String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
-            editText.setText(selectedDate);
+            dob = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+            etNoticeDate.setText(dob);
+        }, year, month, day);
+        datePickerDialog.show();
+    }
+
+    private void showJoiningDatePickerDialog() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, selectedYear, selectedMonth, selectedDay) -> {
+            joiningDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+            etJoiningDate.setText(joiningDate);
         }, year, month, day);
         datePickerDialog.show();
     }
@@ -119,8 +141,47 @@ public class AddWorker extends AppCompatActivity {
             Toast.makeText(this, "Please fill all the fields correctly!", Toast.LENGTH_LONG).show();
             return;
         }
+        worker();
+    }
 
-        // Save data (For now, just show a success message)
-        Toast.makeText(this, "Worker Added Successfully!", Toast.LENGTH_SHORT).show();
+    private void worker() {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        params.put("name",fullname);
+        params.put("gender",selectedGender);
+        params.put("address",address);
+        params.put("mobileno",mobileNo);
+        params.put("adhr",adharNo);
+        params.put("status",selectedStatus);
+        params.put("dob",dob);
+        params.put("jdate",joiningDate);
+        params.put("qulification",qualification);
+
+        client.post(urls.addworker,params,new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                try {
+                    String status=response.getString("success");
+                    if (status.equals("1")){
+                        Toast.makeText(AddWorker.this, "Data For Worker Is Added!", Toast.LENGTH_SHORT).show();
+                        dataclear();
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                Toast.makeText(AddWorker.this, "Server Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void dataclear() {
+        etAddress.setText(""); etFullname.setText(""); etAdhrno.setText(""); etMobile.setText(""); etJoiningDate.setText(""); etNoticeDate.setText(""); etQualification.setText("");
     }
 }

@@ -17,4 +17,5 @@ public class urls {
     public static String addnotice=address+"addnotice.php";
     public static String addnoticeimg=address+"addnoticeimg.php";
     public static String studentlogin=address+"login.php";
+    public static String addworker=address+"addworker.php";
 }
