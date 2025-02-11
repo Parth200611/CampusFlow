@@ -2,11 +2,14 @@ package com.mountreachsolution.campusflow;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowInsetsController;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -28,7 +31,14 @@ public class AdminHomepage extends AppCompatActivity implements BottomNavigation
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_admin_homepage);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.blue)));
-        getWindow().setStatusBarColor(ContextCompat.getColor(AdminHomepage.this,R.color.blue));
+        Window window = getWindow();
+        window.setStatusBarColor(getResources().getColor(R.color.blue));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.setDecorFitsSystemWindows(false);
+            window.getInsetsController().setSystemBarsAppearance(0, WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS);
+        }
+
         getWindow().setNavigationBarColor(ContextCompat.getColor(AdminHomepage.this,R.color.white));
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 

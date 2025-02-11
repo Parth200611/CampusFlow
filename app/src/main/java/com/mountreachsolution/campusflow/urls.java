@@ -2,7 +2,7 @@ package com.mountreachsolution.campusflow;
 
 public class urls {
 
-    public static String address="http://192.168.1.5:80/campusflow/";
+    public static String address="http://192.168.1.4:80/campusflow/";
     public static String adpassimage=address+"addpassimage.php";
     public static String adcollegerecipt=address+"addcollegerecipt.php";
     public static String addadhrcard=address+"addadhr.php";

@@ -18,7 +18,8 @@
             android:exported="false" />
         <activity
             android:name=".Studenthomepage"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/showactionbar"/>
         <activity
             android:name=".ViewLeaveRequest"
             android:exported="false" />

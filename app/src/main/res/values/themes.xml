@@ -7,8 +7,14 @@
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/blue</item>
     </style>
-    <style name="showactionbar" parent="Theme.MaterialComponents.DayNight.DarkActionBar.Bridge"/>
+    <style name="showactionbar" parent="Theme.MaterialComponents.DayNight.DarkActionBar.Bridge">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorOnPrimary">@color/white</item> <!-- Text color on Action Bar -->
+    </style>
+
 
 
     <style name="Theme.CAMPUSFLOW" parent="Base.Theme.CAMPUSFLOW" />
+
+
 </resources>
