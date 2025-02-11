@@ -20,4 +20,5 @@ public class urls {
     public static String addworker=address+"addworker.php";
     public static String getworker=address+"getworker.php";
     public static String removeworker=address+"removeworker.php";
+    public static String studentprofil=address+"getdata.php";
 }

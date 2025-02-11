@@ -119,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putBoolean("isLoggedIn", true);
                         editor.putString("userType", "Student");
+                        editor.putString("loggedInUsername", username);
                         editor.apply();
 
                         // Redirect to Student Homepage
