@@ -23,4 +23,5 @@ public class urls {
     public static String studentprofil=address+"getdata.php";
     public static String leaveimage=address+"leveaddimage.php";
     public static String addleavedata=address+"leavedata.php";
+    public static String getnotice=address+"getnotice.php";
 }
