@@ -1,8 +1,11 @@
 package com.mountreachsolution.campusflow;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowInsetsController;
@@ -49,6 +52,31 @@ public class Studenthomepage extends AppCompatActivity implements BottomNavigati
         } else if(item.getItemId()==R.id.profil){
             getSupportFragmentManager().beginTransaction().replace(R.id.FrameLayoutuserhome,profilpage1).commit();
         }
+        return true;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.studentmenu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==R.id.studentHelp){
+            Intent i = new Intent(Studenthomepage.this,Help.class);
+            startActivity(i);
+
+        } else if (item.getItemId() == R.id.viewrequest) {
+            Intent i = new Intent(Studenthomepage.this,studentViewLeaveRequest.class);
+            startActivity(i);
+
+        } else if (item.getItemId() == R.id.admissiondetails) {
+            Intent i = new Intent(Studenthomepage.this,ViewAdmissiondetails.class);
+            startActivity(i);
+
+        }
+
         return true;
     }
 }

@@ -14,12 +14,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ViewAdmissiondetails"
+            android:exported="false" />
+        <activity
+            android:name=".studentViewLeaveRequest"
+            android:exported="false" />
+        <activity
             android:name=".AddWorker"
             android:exported="false" />
         <activity
             android:name=".Studenthomepage"
             android:exported="false"
-            android:theme="@style/showactionbar"/>
+            android:theme="@style/showactionbar" />
         <activity
             android:name=".ViewLeaveRequest"
             android:exported="false" />
