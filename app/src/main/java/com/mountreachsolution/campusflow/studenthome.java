@@ -58,6 +58,12 @@ public class studenthome extends Fragment {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray =jsonObject.getJSONArray("getallnotice");
+                    if (jsonArray.length() == 0) {
+                        // No data found, show tvnoadmision and hide rvlist
+                        tvnodat.setVisibility(View.VISIBLE);
+                        rvlist.setVisibility(View.GONE);
+                        return; // Exit function as there's no data to display
+                    }
                     for (int i=0;i<jsonArray.length();i++){
                         JSONObject jsonObject1=jsonArray.getJSONObject(i);
                         String id=jsonObject1.getString("id");

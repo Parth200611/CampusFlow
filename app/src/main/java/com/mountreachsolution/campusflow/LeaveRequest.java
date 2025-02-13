@@ -89,13 +89,8 @@ public class LeaveRequest extends Fragment {
             }
         });
 
-        btnAddImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SelectUserProfileimage();
 
-            }
-        });
+
         btnPostNotice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,49 +118,68 @@ public class LeaveRequest extends Fragment {
                 }
             }
         });
-
         return view;
     }
 
     private void postdata() {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
+        client.setTimeout(30000); // 30 seconds
 
-        params.put("name",name);
-        params.put("branch",branch);
-        params.put("sem",sem);
-        params.put("enroll",enroll);
-        params.put("sdate",startdate);
-        params.put("edate",enddate);
-        params.put("title",title);
-        params.put("dis",dis);
-        client.post(urls.addleavedata,params,new JsonHttpResponseHandler(){
+        params.put("name", name);
+        params.put("branch", branch);
+        params.put("sem", sem);
+        params.put("enroll", enroll);
+        params.put("sdate", startdate);
+        params.put("edate", enddate);
+        params.put("title", title);
+        params.put("dis", dis);
+
+        client.post(urls.addleavedata, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 try {
                     String status = response.getString("success");
-                    if (status.equals("1")){
+                    if (status.equals("1")) {
                         progressDialog.dismiss();
                         Toast.makeText(getActivity(), "Request Posted!", Toast.LENGTH_SHORT).show();
-                        UserImageSaveTodatabase(bitmap,title);
-
-                    }else {
-                        Toast.makeText(getActivity(), "Fail to Add Notice", Toast.LENGTH_SHORT).show();
+                        clear();
+                    } else {
+                        Toast.makeText(getActivity(), "Failed to Add Notice", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
-                    throw new RuntimeException(e);
+                    progressDialog.dismiss();
+                    Log.e("JSON_ERROR", "Parsing error: " + e.getMessage());
+                    Toast.makeText(getActivity(), "Something went wrong. Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
+                progressDialog.dismiss();
+                Log.e("HTTP_ERROR", "Request failed: " + (throwable != null ? throwable.getMessage() : "Unknown error"));
+                if (errorResponse != null) {
+                    Log.e("HTTP_ERROR", "Response: " + errorResponse.toString());
+                }
+                Toast.makeText(getActivity(), "Failed to post data. Please try again!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void clear() {
+        etName.setText("");
+        etBranch.setText("");
+        etStartDate.setText("");
+        etSem.setText("");
+        etEndDate.setText("");
+        etEnroll.setText("");
+        etTitle.setText("");
+        etDescription.setText("");
 
 
     }
+
 
     private void SelectUserProfileimage() {
         Intent intent = new Intent();
@@ -174,6 +188,7 @@ public class LeaveRequest extends Fragment {
         startActivityForResult(Intent.createChooser(intent,"Select Image For Profil"),pick_image_request);
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -189,8 +204,9 @@ public class LeaveRequest extends Fragment {
             }
         }
     }
+
     private void UserImageSaveTodatabase(Bitmap bitmap, String strTitle) {
-        VolleyMultipartRequest volleyMultipartRequest =  new VolleyMultipartRequest(Request.Method.POST, urls.leaveimage, new Response.Listener<NetworkResponse>() {
+        VolleyMultipartRequest volleyMultipartRequest =  new VolleyMultipartRequest(Request.Method.POST, urls.image, new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
                 Toast.makeText(getActivity(), "Image Save as Notice "+strTitle, Toast.LENGTH_SHORT).show();
@@ -236,6 +252,7 @@ public class LeaveRequest extends Fragment {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
+
 
     private void showDatePicker2() {
         Calendar calendar = Calendar.getInstance();

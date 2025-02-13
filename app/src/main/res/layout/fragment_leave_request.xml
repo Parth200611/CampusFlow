@@ -132,32 +132,7 @@
             android:padding="12dp"
             android:background="@android:drawable/editbox_background"
           />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Request Image"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16sp"
-            android:paddingTop="8dp"
-            android:paddingBottom="4dp" />
 
-        <ImageView
-            android:id="@+id/ivNoticeImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/baseline_camera_alt_24"
-            />
-
-        <Button
-            android:id="@+id/btnAddImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Image"
-            android:backgroundTint="@color/blue"
-            android:textColor="@color/white"
-            android:layout_marginTop="8dp"
-            />
         <Button
             android:id="@+id/btnPostNotice"
             android:layout_width="match_parent"

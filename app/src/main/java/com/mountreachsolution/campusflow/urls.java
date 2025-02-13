@@ -21,8 +21,10 @@ public class urls {
     public static String getworker=address+"getworker.php";
     public static String removeworker=address+"removeworker.php";
     public static String studentprofil=address+"getdata.php";
-    public static String leaveimage=address+"leveaddimage.php";
-    public static String addleavedata=address+"leavedata.php";
+    public static String leaveimage=address+"leavephoyo.php";
+    public static String image=address+"leavephoyo.php";
+    public static String addleavedata=address+"adddat.php";
     public static String getnotice=address+"getnotice.php";
     public static String getAdmissiondata=address+"getAdmission.php";
+    public static String getLeaverequest=address+"getrequest.php";
 }
