@@ -1,14 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addleverequest">
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</FrameLayout>
+        <!-- Heading -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Leave Request"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            android:layout_marginTop="100dp"
+            android:paddingBottom="16dp"/>
+
+        <!-- Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your name"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="textPersonName"/>
+
+        <!-- Mobile Number -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Number" />
+
+        <EditText
+            android:id="@+id/et_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter mobile number"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="phone"/> <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room Number" />
+
+        <EditText
+            android:id="@+id/et_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Room number"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background"
+           />
+
+        <!-- Leave Date Picker -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Date" />
+
+        <EditText
+            android:id="@+id/et_leave_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pick a date"
+            android:padding="10dp"
+            android:focusable="false"
+            android:background="@android:drawable/editbox_background"
+            android:drawableEnd="@android:drawable/ic_menu_my_calendar"/>
+
+        <!-- Description -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description" />
+
+        <EditText
+            android:id="@+id/et_description"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Enter reason for leave"
+            android:padding="10dp"
+            android:gravity="top"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="textMultiLine"/>
+
+        <!-- Leaving Date Picker -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Leaving Date" />
+
+        <EditText
+            android:id="@+id/et_leaving_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pick a date"
+            android:padding="10dp"
+            android:focusable="false"
+            android:background="@android:drawable/editbox_background"
+            android:drawableEnd="@android:drawable/ic_menu_my_calendar"/>
+
+        <!-- Image Upload -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload Image" />
+
+        <ImageView
+            android:id="@+id/iv_uploaded_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_gallery"
+            android:background="@android:color/darker_gray"/>
+
+        <Button
+            android:id="@+id/btn_add_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Image"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post Leave Request"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -45,7 +45,7 @@ public class AdmissionDetails extends AppCompatActivity {
     TextView tvName, tvExam, tvPercentage, tvFromNo, tvBranch, tvAdmissionYear, tvDOB, tvAadharNo, tvContactNo, tvEmail;
      Button btnAccept, btnReject;
      String id;
-     String enrollement,password;
+     String enrollement,password,roomnumber;
     String fromno,name,dateofbirth,adhrno,cast,nationality,address,contactnumber,barnch,admissionyear,lastexamination,lastexamppersentage,fathername,parentcontactno,addressparent,bloodgroup,arcrecipt,passphoto,adhrcardphoto,periousyearmarksheet,castcetificate,email;
 
 
@@ -87,11 +87,12 @@ public class AdmissionDetails extends AppCompatActivity {
             public void onClick(View view) {
                  enrollement = generateEnrollmentNumber();
                  password = generateRandomPassword();
+                generateRoomNumber();
                 passdat();
                 
 
                 if (!email.isEmpty()) {
-                    sendEmailConfirmation(email, enrollement, password);
+                    sendEmailConfirmation(email, enrollement, password,roomnumber);
                 } else {
                     Toast.makeText(AdmissionDetails.this, "Email not available!", Toast.LENGTH_SHORT).show();
                 }            }
@@ -136,6 +137,7 @@ public class AdmissionDetails extends AppCompatActivity {
         params.put("email",email);
         params.put("enrollment",enrollement);
         params.put("password",password);
+        params.put("room",roomnumber);
 
 
 
@@ -223,12 +225,12 @@ public class AdmissionDetails extends AppCompatActivity {
 
         return password.toString();
     }
-    private void sendEmailConfirmation(String email, String enrollment, String password) {
+    private void sendEmailConfirmation(String email, String enrollment, String password,String roomnumber) {
         String subject = "Admission Confirmation - Enrollment Details";
         String message = "Dear Student,\n\n"
                 + "Your admission has been confirmed.\n\n"
                 + "Enrollment Number: " + enrollment + "\n"
-                + "Password: " + password + "\n\n"
+                + "Password: " + password + "\n\n" + "Room No: " + roomnumber + "\n\n"
                 + "Use these credentials to log in.\n\n"
                 + "Best Regards,\nYour Institution";
 
@@ -345,5 +347,11 @@ public class AdmissionDetails extends AppCompatActivity {
 
         requestQueue.add(stringRequest);
 
+    }
+
+    private void generateRoomNumber() {
+        Random random = new Random();
+        int number = random.nextInt(900) + 100; // Generate a number between 100 and 999
+        roomnumber = "Room " + number; // Store in variable
     }
 }

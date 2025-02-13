@@ -37,7 +37,7 @@ public class Studenthomepage extends AppCompatActivity implements BottomNavigati
 
     }
     studenthome studenthome1=new studenthome();
-    addleverequest addleverequest1=new addleverequest();
+    LeaveRequest addleverequest1=new LeaveRequest();
     profilpage profilpage1=new profilpage();
 
     @Override

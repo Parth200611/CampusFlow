@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LeaveRequest">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16sp"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Leave Request"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/blue"
+        android:layout_marginTop="100dp"
+        android:paddingBottom="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your name"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="textPersonName"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Branch" />
+
+        <EditText
+            android:id="@+id/et_barnch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Branch"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="textPersonName"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sem" />
+
+        <EditText
+            android:id="@+id/et_sem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Sem"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="textPersonName"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enrollment No" />
+
+        <EditText
+            android:id="@+id/et_enroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Enrollment Number"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="textPersonName"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Date"
+            />
+
+        <EditText
+            android:id="@+id/et_startdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:focusable="false"
+            android:clickable="true"
+            android:hint="Enter Date"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="textPersonName"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Date " />
+
+        <EditText
+            android:id="@+id/et_enddate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Date"
+            android:focusable="false"
+            android:clickable="true"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="textPersonName"/>
+ <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title" />
+
+        <EditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Title"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background"
+            android:inputType="textPersonName"/>
+ <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Discription " />
+
+        <EditText
+            android:id="@+id/et_dis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Write problem in berif"
+            android:minHeight="100dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:padding="12dp"
+            android:background="@android:drawable/editbox_background"
+          />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Request Image"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp" />
+
+        <ImageView
+            android:id="@+id/ivNoticeImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/baseline_camera_alt_24"
+            />
+
+        <Button
+            android:id="@+id/btnAddImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Image"
+            android:backgroundTint="@color/blue"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            />
+        <Button
+            android:id="@+id/btnPostNotice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post Notice"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="160dp"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+
+
+</ScrollView>

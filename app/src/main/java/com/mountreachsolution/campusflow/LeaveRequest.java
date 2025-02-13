@@ -2,12 +2,9 @@ package com.mountreachsolution.campusflow;
 
 import static android.app.Activity.RESULT_OK;
 
-import static com.mountreachsolution.campusflow.profilpage.PREFS_NAME;
-
 import android.app.DatePickerDialog;
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,7 +18,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -49,89 +45,113 @@ import java.util.Map;
 import cz.msebera.android.httpclient.Header;
 
 
-public class addleverequest extends Fragment {
-    EditText etname,etnumber,etselectdate,etdiscription,etlevedate,etroom;
-    String selectdate,levedate,enrollment;
-    ImageView ivimage;
-    Button btnaddimage,btnpost;
+public class LeaveRequest extends Fragment {
+    EditText etName, etBranch, etSem, etEnroll, etStartDate, etEndDate, etTitle, etDescription;
+     ImageView ivNoticeImage;
+     Button btnAddImage, btnPostNotice;
+     String startdate,enddate,name,branch,sem,enroll,title,dis;
     Bitmap bitmap;
     Uri filepath;
     private  int pick_image_request=789;
 
     private static final int PICK_IMAGE_REQUEST_PASS = 1;
-    String selectedLeaveDate = "";
-    String selectedLeavingDate = "";
-    SharedPreferences sharedPreferences;
-
+    ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        sharedPreferences = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-
-        // Fetch username
-        enrollment = sharedPreferences.getString("loggedInUsername", "Guest");
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_addleverequest, container, false);
-        etselectdate = view.findViewById(R.id.et_leave_date);
-        etlevedate = view.findViewById(R.id.et_leaving_date);
-        ivimage = view.findViewById(R.id.iv_uploaded_image);
-        btnaddimage = view.findViewById(R.id.btn_add_image);
-        btnpost = view.findViewById(R.id.btn_submit);
-        etname = view.findViewById(R.id.et_name);
-        etnumber = view.findViewById(R.id.et_mobile);
-        etdiscription = view.findViewById(R.id.et_description);
-        etroom = view.findViewById(R.id.et_room);
+        View view= inflater.inflate(R.layout.fragment_leave_request, container, false);
+        etName = view.findViewById(R.id.et_name);
+        etBranch = view.findViewById(R.id.et_barnch);
+        etSem = view.findViewById(R.id.et_sem);
+        etEnroll = view.findViewById(R.id.et_enroll);
+        etStartDate = view.findViewById(R.id.et_startdate);
+        etEndDate = view.findViewById(R.id.et_enddate);
+        etTitle = view.findViewById(R.id.et_title);
+        etDescription = view.findViewById(R.id.et_dis);
+        ivNoticeImage = view.findViewById(R.id.ivNoticeImage);
+        btnAddImage = view.findViewById(R.id.btnAddImage);
+        btnPostNotice = view.findViewById(R.id.btnPostNotice);
 
-        btnpost.setOnClickListener(new View.OnClickListener() {
+        etStartDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showDatePicker();
 
+            }
+        });
+        etEndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePicker2();
 
             }
         });
 
-
-        etselectdate.setOnClickListener(v -> openDatePicker(etselectdate, true));
-
-        // Date Picker for Leaving Date
-        etlevedate.setOnClickListener(v -> openDatePicker(etlevedate, false));
-
-
-        btnaddimage.setOnClickListener(new View.OnClickListener() {
+        btnAddImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SelectUserProfileimage();
+
             }
         });
+        btnPostNotice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (etName.getText().toString().isEmpty()){
+                    etName.setError("Enter Name");
+                }else  if (etBranch.getText().toString().isEmpty()){
+                    etBranch.setError("Enter Branch");
+                }else  if (etSem.getText().toString().isEmpty()){
+                    etSem.setError("Enter Sem");
+                }else  if (etEnroll.getText().toString().isEmpty()){
+                    etEnroll.setError("Enter Enrollment No");
+                }else{
+                    name=etName.getText().toString().trim(); 
+                    branch=etBranch.getText().toString().trim(); 
+                    sem=etSem.getText().toString().trim();
+                    title=etTitle.getText().toString().trim();
+                    dis=etDescription.getText().toString().trim();
+                    enroll=etEnroll.getText().toString().trim();
+                    progressDialog=new ProgressDialog(getActivity());
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.show();
+
+                    
+                    postdata();
+                }
+            }
+        });
+
         return view;
     }
 
-    private void postData() {
+    private void postdata() {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
-        params.put("name",etname.getText().toString());
-        params.put("mobileno",etnumber.getText().toString());
-        params.put("room",etroom.getText().toString());
-        params.put("selectdate",selectdate);
-        params.put("dis",etdiscription.getText().toString());
-        params.put("ldate",selectedLeaveDate);
-        params.put("enroll",enrollment);
-
+        params.put("name",name);
+        params.put("branch",branch);
+        params.put("sem",sem);
+        params.put("enroll",enroll);
+        params.put("sdate",startdate);
+        params.put("edate",enddate);
+        params.put("title",title);
+        params.put("dis",dis);
         client.post(urls.addleavedata,params,new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 try {
-                    String status=response.getString("success");
+                    String status = response.getString("success");
                     if (status.equals("1")){
-                        Toast.makeText(getActivity(), "Request send", Toast.LENGTH_SHORT).show();
-                        UserImageSaveTodatabase(bitmap,enrollment);
-                        clerdata();
-                    }else{
-                        Toast.makeText(getActivity(), "Fail to send Request", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                        Toast.makeText(getActivity(), "Request Posted!", Toast.LENGTH_SHORT).show();
+                        UserImageSaveTodatabase(bitmap,title);
+
+                    }else {
+                        Toast.makeText(getActivity(), "Fail to Add Notice", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -143,40 +163,8 @@ public class addleverequest extends Fragment {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
-    }
 
-    private void clerdata() {
-        etnumber.setText("");
-        etname.setText("");
-        etroom.setText("");
-        etdiscription.setText("");
-        etselectdate.setText("");
-        etlevedate.setText("");
-        ivimage.setImageDrawable(null); // Clear ImageView
-        selectdate = "";
-        levedate = "";
 
-    }
-
-    private void openDatePicker(EditText editText, boolean isLeaveDate) {
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
-                (DatePicker view, int selectedYear, int selectedMonth, int selectedDay) -> {
-                    String formattedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
-                    editText.setText(formattedDate);
-
-                    // Save the selected date in a string
-                    if (isLeaveDate) {
-                        selectedLeaveDate = formattedDate;
-                    } else {
-                        selectedLeavingDate = formattedDate;
-                    }
-                }, year, month, day);
-        datePickerDialog.show();
     }
 
     private void SelectUserProfileimage() {
@@ -186,7 +174,6 @@ public class addleverequest extends Fragment {
         startActivityForResult(Intent.createChooser(intent,"Select Image For Profil"),pick_image_request);
 
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -195,14 +182,13 @@ public class addleverequest extends Fragment {
             filepath=data.getData();
             try {
                 bitmap= MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),filepath);
-                ivimage.setImageBitmap(bitmap);
+                ivNoticeImage.setImageBitmap(bitmap);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
     }
-
     private void UserImageSaveTodatabase(Bitmap bitmap, String strTitle) {
         VolleyMultipartRequest volleyMultipartRequest =  new VolleyMultipartRequest(Request.Method.POST, urls.leaveimage, new Response.Listener<NetworkResponse>() {
             @Override
@@ -244,11 +230,36 @@ public class addleverequest extends Fragment {
         };
         Volley.newRequestQueue(getActivity()).add(volleyMultipartRequest);
     }
+
     private byte[] getfiledatafromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream  = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
 
+    private void showDatePicker2() {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                (view, year, month, dayOfMonth) -> {
+                    enddate = dayOfMonth + "/" + (month + 1) + "/" + year;
+                    etEndDate.setText(enddate);
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
 
+    private void showDatePicker() {
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                (view, year, month, dayOfMonth) -> {
+                    startdate = dayOfMonth + "/" + (month + 1) + "/" + year;
+                    etStartDate.setText(startdate);
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
 }

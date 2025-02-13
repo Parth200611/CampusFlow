@@ -44,6 +44,8 @@ public class profilpage extends Fragment {
     SharedPreferences sharedPreferences;
     public static final String PREFS_NAME = "LoginPrefs";
     String savedUsername,studentName,email,adhrno,image,mobileno;
+    TextView tvroom;
+    String room;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +60,7 @@ public class profilpage extends Fragment {
         tvadhareno = view.findViewById(R.id.adharvalue);
         tvenrollment = view.findViewById(R.id.addressValue);
         tvMobileNo = view.findViewById(R.id.Mobilenovalue);
+        tvroom = view.findViewById(R.id.tvroomno);
 
         sharedPreferences = getActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
@@ -103,6 +106,7 @@ public class profilpage extends Fragment {
                                 email = data.optString("email", "N/A");
                                 mobileno = data.optString("contactnumber", "N/A");
                                 image = data.optString("passphoto", "");
+                                room = data.optString("room", "");
 
                                 // Update UI on main thread
                                 tvname.setText(studentName);
@@ -110,6 +114,7 @@ public class profilpage extends Fragment {
                                 tvage.setText(email);
                                 tvMobileNo.setText(mobileno);
                                 tvenrollment.setText(savedUsername);
+                                tvroom.setText(room);
 
                                 if (!image.isEmpty()) {
                                     Glide.with(getActivity())
