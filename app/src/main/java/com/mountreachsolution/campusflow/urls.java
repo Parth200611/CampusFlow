@@ -27,4 +27,7 @@ public class urls {
     public static String getnotice=address+"getnotice.php";
     public static String getAdmissiondata=address+"getAdmission.php";
     public static String getLeaverequest=address+"getrequest.php";
+    public static String Acceptrequest=address+"confirmrequest.php";
+    public static String remove=address+"removerequest.php";
+    public static String getData=address+"getrequestenroll.php";
 }

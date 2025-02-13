@@ -70,8 +70,6 @@ public class LeaveRequest extends Fragment {
         etEndDate = view.findViewById(R.id.et_enddate);
         etTitle = view.findViewById(R.id.et_title);
         etDescription = view.findViewById(R.id.et_dis);
-        ivNoticeImage = view.findViewById(R.id.ivNoticeImage);
-        btnAddImage = view.findViewById(R.id.btnAddImage);
         btnPostNotice = view.findViewById(R.id.btnPostNotice);
 
         etStartDate.setOnClickListener(new View.OnClickListener() {
