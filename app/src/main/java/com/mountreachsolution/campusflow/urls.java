@@ -30,4 +30,5 @@ public class urls {
     public static String Acceptrequest=address+"confirmrequest.php";
     public static String remove=address+"removerequest.php";
     public static String getDataEnroll=address+"getrequestenroll.php";
+    public static String getAllAdmisson=address+"getAdmissiondata.php";
 }

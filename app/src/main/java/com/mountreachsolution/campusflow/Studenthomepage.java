@@ -71,6 +71,10 @@ public class Studenthomepage extends AppCompatActivity implements BottomNavigati
             Intent i = new Intent(Studenthomepage.this,studentViewLeaveRequest.class);
             startActivity(i);
 
+        }else if (item.getItemId() == R.id.paybill) {
+            Intent i = new Intent(Studenthomepage.this,PayBill.class);
+            startActivity(i);
+
         } else if (item.getItemId() == R.id.admissiondetails) {
             Intent i = new Intent(Studenthomepage.this,ViewAdmissiondetails.class);
             startActivity(i);

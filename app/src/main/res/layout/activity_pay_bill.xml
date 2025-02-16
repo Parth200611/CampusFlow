@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"
+    android:background="#FFFFFF">
+
+    <!-- Heading -->
+    <TextView
+        android:id="@+id/tv_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pay Bill"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/blue"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Description Text -->
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scan the QR code below to complete your payment."
+        android:textSize="16sp"
+        android:textColor="#555"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <!-- QR Code Image -->
+    <ImageView
+        android:id="@+id/iv_qr_code"
+        android:layout_width="400dp"
+        android:layout_height="350dp"
+        android:src="@drawable/qr"
+        android:scaleType="centerInside"
+        android:contentDescription="QR Code"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Additional Information -->
+    <TextView
+        android:id="@+id/tv_additional_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ensure to complete payment before check-out."
+        android:textSize="14sp"
+        android:textColor="#777"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Back Button -->
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Home"
+        android:padding="10dp"
+        android:textColor="#FFF"
+        android:backgroundTint="@color/blue"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

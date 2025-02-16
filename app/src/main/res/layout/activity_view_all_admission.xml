@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ViewAllAdmission">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View All Students"
+        android:textColor="@color/blue"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:layout_marginStart="16sp"
+        android:layout_marginTop="40dp"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvList"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="No Students"
+        android:textColor="@color/blue"
+        android:textSize="28dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginStart="16sp"
+        android:layout_marginTop="40dp"
+        android:visibility="gone"
+        android:id="@+id/tvNostu"
+        />
+
+</LinearLayout>

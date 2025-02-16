@@ -89,6 +89,10 @@ public class AdminHomepage extends AppCompatActivity implements BottomNavigation
             Intent i = new Intent(AdminHomepage.this,AddWorker.class);
             startActivity(i);
 
+        }else if (item.getItemId() == R.id.AdminViewallstudent) {
+            Intent i = new Intent(AdminHomepage.this,ViewAllAdmission.class);
+            startActivity(i);
+
         }
 
         return true;

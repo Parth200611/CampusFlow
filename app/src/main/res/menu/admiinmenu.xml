@@ -6,6 +6,10 @@
         android:title="Leave Request"
         />
     <item
+        android:id="@+id/AdminViewallstudent"
+        android:title="View All Students"
+        />
+    <item
         android:id="@+id/adminViewworker"
         android:title="View Workers"
         />
